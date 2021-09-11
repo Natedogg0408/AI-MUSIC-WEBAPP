@@ -17,6 +17,9 @@ function setup(){
 
 function draw(){
     image(video, 0, 0, 600, 500);
+
+   
+    
 }
 
 
@@ -43,4 +46,23 @@ function gotPoses(results){
         rightWristY = results[0].pose.rightWrist.y;
         console.log("rightWrist X = "+ rightWristX + "rightWrist Y = " + rightWristY);
     }
+}
+
+if(leftWristY > 250 && leftWristY < 600)
+{
+song_1.play();
+song_1.volume(0.7)
+document.getElementById("song_name").innerHTML = 'Song 1';
+}
+
+if(rightWristY > 250 && rightWristY < 600)
+{
+song_2.play();
+song_2.volume(0.7)
+document.getElementById("song_name").innerHTML = 'Song 2';
+}
+
+if(rightWristY<150 && leftWristY<150 && rightWristY>600 && leftWristY>600){
+    song_1.stop();
+    song_2.stop();
 }
